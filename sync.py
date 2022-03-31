@@ -250,8 +250,7 @@ def get_playlists_from_spotify(spotify_session, config):
     exclude_list = set([x.split(':')[-1] for x in config.get('excluded_playlists', [])])
     while True:
         for spotify_playlist in spotify_results['items']:
-            if spotify_playlist['owner']['id'] == config['spotify']['username'] and not spotify_playlist['id'] in exclude_list:
-                playlists.append(spotify_playlist)
+            playlists.append(spotify_playlist)
         # move to the next page of results if there are still playlists remaining
         if spotify_results['next']:
             spotify_results = spotify_session.next(spotify_results)
